@@ -1,72 +1,68 @@
-print("=== Patient Health Monitoring System ===")
-patients = []  
-def add_patient():
-    print("\n--- Add Patient ---")
-    name = input("Enter patient name: ")
-    age = input("Enter patient age: ")
-    bp = input("Enter blood pressure (ex: 120/80): ")
-    sugar = input("Enter sugar level (mg/dL): ")
-    temp = input("Enter body temperature (°C): ")
-    patient = {
-        "name": name,
-        "age": age,
-        "bp": bp,
-        "sugar": int(sugar),
-        "temp": float(temp)
-    }
-    patients.append(patient)
-    print("Patient added successfully!\n")
-def view_patients():
-    print("\n--- Patient Records ---")
-    if len(patients) == 0:
-        print("No patients found.\n")
-        return
-    for i, p in enumerate(patients):
-        print(f"{i+1}. {p['name']} | Age: {p['age']} | BP: {p['bp']} | Sugar: {p['sugar']} | Temp: {p['temp']}")
-    print()
-def analyze_health():
-    print("\n--- Health Analysis ---")
-    if len(patients) == 0:
-        print("No patients to analyze.\n")
-        return
-    for p in patients:
-        print(f"\nHealth Report for {p['name']}")
-        if p["sugar"] > 140:
-            print(" - High sugar detected")
-        else:
-            print(" - Sugar level normal")
-        if p["temp"] > 37.5:
-            print(" - Fever detected")
-        else:
-            print(" - Normal temperature")
-        if p["bp"] != "120/80":
-            print(" - BP not normal")
-        else:
-            print(" - BP normal")
-    print()
-def save_to_file():
-    print("\nSaving patient data to file...")
-    with open("patients.txt", "w") as f:
-        for p in patients:
-            f.write(f"{p['name']}, {p['age']}, {p['bp']}, {p['sugar']}, {p['temp']}\n")
-    print("Data saved to 'patients.txt'\n")
-while True:
-    print("1. Add Patient")
-    print("2. View Patients")
-    print("3. Analyze Health")
-    print("4. Save to File")
-    print("5. Exit")
-    choice = input("Enter your choice: ")
-    if choice == "1":
-        add_patient()
-    elif choice == "2":
-        view_patients()
-    elif choice == "3":
-        analyze_health()
-    elif choice == "4":
-        save_to_file()
-    elif choice == "5":
-        print("Exiting program...")
-        break
-    else:
-        print("Invalid choice. Try again.\n")
+PATIENT HEALTH MONITORING SYSTEM
+1. INTRODUCTION
+The Patient Health Monitoring System is a small Python program that helps store basic health details of patients. The user can add patient information, see all saved patients, check their health using simple rules, and save everything into a text file.
+
+2. OBJECTIVE
+The main aim of this project is to create a simple system that can:
+•	Record patient information
+•	Analyze basic health conditions
+•	Display stored patient data
+•	Save the data to a file
+
+3.PYTHON CONCEPTS USED:
+•	Variables
+•	Lists
+•	Dictionaries
+•	If-else conditions
+•	Loops
+•	User input (input())
+•	File handling (writing to a file)
+
+4. HOW THE SYSTEM WORKS
+When the program starts, it shows a menu with the following options:
+1.	Add Patient
+2.	View Patients
+3.	Analyze Health
+4.	Save to File
+5.	Exit
+The user chooses a number, and the program performs that task.
+4.1 ADD PATIENT
+The user enters:
+•	name
+•	age
+•	blood pressure
+•	sugar level
+•	temperature
+The program saves this information in a dictionary and stores it in a list.
+4.2 VIEW PATIENTS
+Shows all patients saved in the list.
+4.3 HEALTH ANALYSIS
+The program checks:
+•	If sugar level is above 140 → high sugar
+•	If temperature is above 37.5°C → fever
+•	If BP is not “120/80” → abnormal BP
+This is a simple rule-based analysis.
+4.4 SAVE TO FILE
+All patient data is written into a text file called patients.txt so the information is not lost.
+
+5. DATA STORAGE
+The program stores each patient like this:
+{
+    "name": "John",
+    "age": "30",
+    "bp": "120/80",
+    "sugar": 130,
+    "temp": 36.5
+}
+All these dictionaries are kept inside a list named patients.
+ 
+
+6. LIMITATIONS
+•	Data is lost when the program closes unless it is saved to the file
+•	Only basic health checks
+•	No GUI (text-only program)
+•	Not meant for real medical use
+
+7. CONCLUSION
+This project is a simple Python application that helps beginners practice how to collect data, store it, analyze it, and save it. It shows how Python can be used to build small useful tools.
+
